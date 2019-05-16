@@ -1,0 +1,14 @@
+extends layout.pug
+block login  
+    if emp
+        include menu/loginmenu.pug
+    else 
+        include form/loginForm.pug  
+block menu
+        if emp
+                include menu/loggedmenu.pug
+        else
+                include menu/menu.pug
+block content
+        h1 Thanh Toan la
+        h1 3044085

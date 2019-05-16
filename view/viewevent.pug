@@ -1,0 +1,21 @@
+table(class="border")
+    tr
+        th(class="eventListHead") Event Name
+        th(class="eventListHead") Start
+        th(class="eventListHead") End
+        th(class="eventListHead") Edit
+        th(class="eventListHead") Delete
+        th(class="eventListHead") Add shift
+    tr
+        if eventList
+            each event in eventList
+                tr(class="border")
+                    td(class="eventList")=event.eventname
+                    td(class="eventList")=event.startdate
+                    td(class="eventList")=event.enddate
+                    td(class="eventList")
+                        input(class="buttonDiv" type="button" title="Edit this event" name="edit" value="Edit" onclick=`document.location.href='/editevent?eventId=${event._id}'`)
+                    td(class="eventList")
+                        input(class="buttonDiv" type="button" title="Delete this event" name="delete" value="Delete" onclick=`confirmDelete('event','${event._id}')`)
+                    td(class="eventList")
+                        input(class="buttonDiv" type="button" title="Add shift to this event" name="addshift" value="Add Shift" onclick=`document.location.href='/shiftlist?eventId=${event._id}'`)                  

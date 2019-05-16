@@ -1,0 +1,31 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    h1 Edit event
+    if infos
+        each info in infos
+            h1=info
+    form(method="GET" action="/updateevent")
+        input#owner(type="hidden" name="owner" value=`${event.owner}`)
+        input#eventId(type="hidden" name="eventId" value=`${event._id}`)
+        table
+                tr
+                    td EventName:
+                        input(type="text" name="eventname" required="true" value=`${event.eventname}`)
+                tr
+                    td Description:
+                        textarea(row="20" cols="30" name="description" value=`${event.description}`)
+                tr
+                    td Start Date:
+                        input#start(type="date" name="startdate" onchage="datevalidation()" value=`${event.startdate}` required="true")
+                        label#datevalid(style="visibility:hidden") Start date should be earlier than End date
+                tr
+                    td End Date:
+                        input#end(type="date" name="enddate" onchage="datevalidation()"  value=`${event.enddate}` required="true")
+                tr
+                    td
+                        input#evtButton(type="submit" value="Update")
+                        input(type="button" value="Cancel" onclick="document.location.href='/volunteer';")

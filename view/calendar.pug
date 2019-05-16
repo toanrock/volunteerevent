@@ -1,0 +1,45 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    h1 calendar page
+    table
+        tr
+            td(class="calendar") 
+                div(class="clickableDiv" title=`click to go to previous month` onclick=`document.location.href='/calendar?year=${year}&month=${month-1}'`) <b>Previous Month</b>
+            td(colspan="5" class="calendar" style="font-weight: bold;font-size:large") 
+                   =monthName+" , "
+                   =year             
+            td(class="calendar")
+                div(class="clickableDiv" title=`click to go to next month` onclick=`document.location.href='/calendar?year=${year}&month=${month+1}'`) <b>Next Month</b>
+        tr
+            th(class="calendar") Monday
+            th(class="calendar") Tuesday
+            th(class="calendar") Wednesday
+            th(class="calendar") Thursday
+            th(class="calendar") Friday
+            th(class="calendar") Saturday
+            th(class="calendar") Sunday
+        if monthday
+            each line in monthday
+                tr
+                    each e in line
+                        if e==0
+                            td(class="day")
+                        else
+                            if emp.type=="Organization"
+                                td(class="day")
+                                    div(class="calendardiv" title=`Click here to add new event on ${monthName} ${e}` onclick=`document.location.href='/addEvent?start=${year}-${month}-${e}'`)=e
+                                        if events
+                                            each evt in events
+                                                if evt.keyday == e
+                                                    div(class="eventDiv" title="Click to view this Event" onclick=`document.location.href='/joinevent?eventId=${evt.id}'`)=evt.eventname                                       
+                            else
+                                td(class="day")
+                                    div(class="calendardiv")=e
+                                        if events
+                                            each evt in events
+                                                if evt.keyday == e
+                                                    div(class="eventDiv" title="Click to view this Event" onclick=`document.location.href='/joinevent?eventId=${evt.id}'`)=evt.eventname   

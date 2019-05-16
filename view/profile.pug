@@ -1,0 +1,45 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    if message
+        h1= message
+    if emp
+        form(method="POST" action="/updateprofile")
+                table 
+                        tr
+                            td Username:
+                                = `${emp.username}`
+                        tr     
+                            td Password:
+                                input#password(type="password" name="password" required="true" onchange="validatePasswordMatch()" value=`${emp.password}`)    
+                        tr     
+                            td Confirm Password:
+                                input#confirm_password(type="password" name="confirmpassword" required="true" onchange="validatePasswordMatch()" value=`${emp.password}`)
+                                label#vString(style="visibility: hidden") Password don't match
+                        tr
+                            td First Name:
+                                input#firstname(type="text" name="firstname" required="true" value=`${emp.firstName}`)
+                        tr
+                            td Last Name:
+                                input#lastname(type="text" name="lastname" required="true" value=`${emp.lastName}`)
+                        tr 
+                            td  You are: 
+                                select#type(name="type" required="true")
+                                    if emp.type=="Organization"
+                                        option(selected) Organization
+                                        option Volunteer
+                                    else
+                                        option Organization
+                                        option(selected) Volunteer
+                        tr
+                            td Address:
+                                input#address(type="text" name="address" value=`${emp.address}`)  
+                        tr
+                            td PhoneNo:
+                                input#phoneNo(type="text" name="phoneNo" value=`${emp.phoneNo}`)  
+                        tr
+                            td
+                                input#register(type="submit" value="Update")    

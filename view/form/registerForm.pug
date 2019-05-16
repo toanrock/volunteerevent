@@ -1,0 +1,36 @@
+html
+    head   
+    body
+        form(method="POST" action="/registernew")
+            table 
+                    tr
+                        td Username:
+                            input#username(type="text" title="can not included character like:'*','=','+','/'" name="username"  required="true" onchange="validateUsernameValid()")
+                            label#uString(style="visibility: hidden") Username is not valid
+                    tr     
+                        td Password:
+                            input#password(type="password" name="password" required="true" onchange="validatePasswordMatch()")    
+                    tr     
+                        td Confirm Password:
+                            input#confirm_password(type="password" name="confirmpassword" required="true" onchange="validatePasswordMatch()")
+                            label#vString(style="visibility: hidden") Password don't match
+                    tr
+                        td First Name:
+                            input#firstname(type="text" name="firstname" required="true" )
+                    tr
+                        td Last Name:
+                            input#lastname(type="text" name="lastname" required="true" )
+                    tr 
+                        td  You are: 
+                            select#type(name="type" required="true")
+                                option Organization
+                                option Volunteer
+                    tr
+                        td Address:
+                            input#address(type="text" name="address" )  
+                    tr
+                        td PhoneNo:
+                            input#phoneNo(type="text" name="phoneNo" )  
+                    tr
+                        td
+                            input#register(type="submit" value="Register")    

@@ -1,0 +1,38 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    h1 Edit shift
+    if infos
+        each info in infos
+            h1=info
+    form(method="GET" action="/updateshift")
+        input#shiftid(type="hidden" name="shiftid" value=`${shift._id}`)
+        input#eventid(type="hidden" name="eventid" value=`${shift.eventid}`)
+        input#startDate(type="hidden" name="startDate" value=`${event.startdate}`)
+        input#endDate(type="hidden" name="endDate" value=`${event.enddate}`)
+        table(style="border:solid")
+            tr
+                th(class="shift") Shift
+                th(class="shift") Date
+                th(class="shift") Start
+                th(class="shift") End
+                th(class="shift") Number of Volunteer
+                th(class="shift") Action         
+            tr
+                td
+                    label(class="number")=shift.number
+                td
+                    input#date(type="date" name="date" value=`${shift.date}` onchange="datevalidation2()" style="width:100%")
+                td
+                    input#start(type="time" name="starttime" value=`${shift.starttime}` onchange="timevalidation()")
+                td
+                    input#end(type="time" name="endtime" value=`${shift.endtime}` onchange="timevalidation()")
+                td
+                    input#max(type="text" name="max" value=`${shift.max}`)
+                td
+                    input#lock(type="submit"  value="Update" style="width:50%")    
+                    input(type="button"  value="Cancel" onclick =`document.location.href='/shiftlist?eventId=${shift.eventid}'` style="width:50%")
+        

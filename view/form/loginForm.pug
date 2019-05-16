@@ -1,0 +1,21 @@
+html
+    head
+    body
+    form(method="POST" action="/login")
+        table
+            tr
+                td(class="label") Username:
+                td 
+                    input#usernamelogin(type="text" name="username")
+            tr
+                td(class="label") Password:
+                td 
+                    input#passwordlogin(type="password" name="password")
+            tr
+                td
+                    input#login(type="submit" name="login" value="Login")
+                td
+                    a(href="/forgetpassword") forget Password?
+            tr
+                td 
+                    a(href='/register') register

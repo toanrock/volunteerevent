@@ -1,0 +1,38 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    h1 Event :
+        =event.eventname
+    if infos
+        each info in infos
+            h1=info
+    table(class="border" )
+        tr
+            th Shift
+            th date
+            th Start
+            th End 
+            th Sign up
+        tr
+            if shiftList
+                each shift in shiftList
+                    tr
+                        td(class="eventList")=shift.number
+                        td(class="eventList")=shift.date
+                        td(class="eventList")=shift.starttime
+                        td(class="eventList")=shift.endtime
+                        td(class="eventList")
+                            each sl in shift.slot
+                                if emp.type=="Volunteer"
+                                    if sl.username == emp.username
+                                        div(class="usersignupDiv" title="click to un sign-up" onclick=`document.location.href='/unsignupshift?shiftId=${shift._id}&eventId=${event._id}&slot=${sl.slot}'`)=sl.fullname
+                                    else
+                                        if sl.username !="sign-up"
+                                            div(class="signupDiv" disable)=sl.fullname
+                                        else
+                                            div(class="signupDiv" title="click to sign-up" onclick=`document.location.href='/signupshift?shiftId=${shift._id}&eventId=${event._id}&slot=${sl.slot}'`)=sl.fullname 
+                                else
+                                    div(class="signupDiv" disable)=sl.fullname                       

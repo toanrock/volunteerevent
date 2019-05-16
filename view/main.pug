@@ -1,0 +1,9 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    h1 main page
+    if message
+        h1=message

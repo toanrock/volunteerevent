@@ -1,0 +1,15 @@
+table(class="border")
+    tr
+        th(class="eventListHead") Event Name
+        th(class="eventListHead") Start
+        th(class="eventListHead") End
+        th(class="eventListHead") Join
+    tr
+        if eventList
+            each event in eventList
+                tr(class="border")
+                    td(class="eventList")=event.eventname
+                    td(class="eventList")=event.startdate
+                    td(class="eventList")=event.enddate
+                    td(class="eventList")
+                        input(class="buttonDiv" type="button" title="Join this event" name="join" value="Join" onclick=`document.location.href='/joinevent?eventId=${event._id}'`)

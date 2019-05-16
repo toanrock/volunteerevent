@@ -1,0 +1,25 @@
+html
+    head
+    style
+        include ../css/project.css
+    block scripts
+        script(src="http://code.jquery.com/jquery-1.11.0.min.js")
+        script(src="/project.js")  
+    body 
+        table
+            tr
+                td(class="rear")
+                td(class="midle") 
+                    img(class="banner" src="/banner.jpg")
+                td(class="rear")
+                   block login
+            tr
+                td(class="rear")
+                td(class="midle")
+                    block menu 
+                td(class="rear")
+            tr
+                td(class="rear")
+                td(class="midle")
+                    block content
+                td(class="rear")

@@ -1,0 +1,30 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    if message
+        h1= message
+    h1 add Event
+    form(method="GET" action="/addNewEvent")
+        input#owner(type="hidden" name="owner" value=`${owner}`)
+        table
+                tr
+                    td EventName:
+                        input(type="text" name="eventname" required="true")
+                tr
+                    td Description:
+                        textarea(row="20" cols="30" name="description")
+                tr
+                    td Start Date:
+                        input#start(type="date" name="startdate" onchange="datevalidation()" value=`${startd}` required="true")
+                        label#datevalid(style="visibility:hidden") Start date should be earlier than End date
+                tr
+                    td End Date:
+                        input#end(type="date" name="enddate" onchange="datevalidation()"  required="true")
+                tr
+                    td
+                        input#evtButton(type="submit" value="add Event")
+                   
+

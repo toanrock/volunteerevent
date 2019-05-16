@@ -1,0 +1,117 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19-Feb-2017, 10:20:33 PM
+    Author     : Toan
+*/
+
+.midle {
+    width: 66%;
+    
+}
+.rear{
+    width: 17%;
+    vertical-align: top;
+}
+.menu{
+    width: 20%;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    background-color: blueviolet;
+    cursor: pointer;
+}
+.clickableDiv{
+    cursor: pointer;
+    background-color: yellowgreen; 
+    height: 100%;
+}
+.signupDiv{
+    cursor: pointer;
+    background-color: darkblue; 
+    color: white;
+    height: 100%;
+    border-top: solid;
+    text-align: center;
+}
+.usersignupDiv{
+    cursor: pointer;
+    background-color: darkred; 
+    color: white;
+    height: 100%;
+    border-top: solid;
+}
+.calendarDiv{
+    background-color: yellowgreen; 
+    height: 100%;
+    cursor: pointer;
+    
+}
+.eventDiv{
+    cursor: pointer;
+    background-color: brown;   
+    border-top: solid;
+    z-index: 100;
+}
+.buttonDiv{
+    cursor: pointer;
+    background-color: blue; 
+    height: 100%;
+    width: 100%;
+    color: white;
+}
+.register{
+    width: 20%;
+    font-size: medium;
+    text-align: center;
+    border-style: solid;
+}
+.label{
+    max-width: 100%;
+    white-space: nowrap;
+    
+}
+.banner{
+    width: 100%;
+}
+.calendar{
+    border-style: solid;
+    text-align: center;
+    width: 14.28%;
+    
+}
+.eventListHead{
+    border-style: solid;
+    text-align: center;
+    width: 16.6%;
+    background-color: lightblue;
+}
+.eventList{
+    border-bottom: solid;
+    border-top: solid;
+    text-align: center;
+    width: 16.6%;
+}
+
+.border{
+    border-style: solid;
+    border-collapse: collapse;
+}
+.day{
+     border-style: solid;
+     text-align: center;
+     width: 14.28%;
+     height: 50px;
+}
+.shift{
+     border-style: solid;
+     text-align: center;
+     width: 16.28%;
+}
+table{
+  //border-style: solid;
+  width: 100%;
+}

@@ -1,0 +1,54 @@
+extends layout.pug
+block login
+    include menu/loginmenu.pug
+block menu
+    include menu/loggedmenu.pug
+block content
+    h1 Event :
+        =event.eventname
+    if infos
+        each info in infos
+            h1=info
+    form(method="GET" action="/addnewshift")
+        input#idEvent(type="hidden" name="eventid" value=`${event._id}`)
+        input#startDate(type="hidden" name="startDate" value=`${event.startdate}`)
+        input#endDate(type="hidden" name="endDate" value=`${event.enddate}`)
+        table(style="border:solid")
+            tr
+                th(class="shift") Shift
+                th(class="shift") Date
+                th(class="shift") Start
+                th(class="shift") End
+                th(class="shift") Number of Volunteer
+                th(class="shift") Action
+            if shiftList
+                each shift in shiftList
+                    tr
+                        td
+                            label(class="number")=shift.number
+                        td
+                            label=shift.date  
+                        td
+                            label=shift.starttime
+                        td
+                            label=shift.endtime
+                        td
+                            label=shift.max
+                        td
+                            input(type="button"  value="Edit" onclick =`document.location.href='/editshift?shiftId=${shift._id}'` style="width:50%")    
+                            input(type="button"  value="Delete" onclick =`confirmDelete('shift','${shift._id}')` style="width:50%")
+            tr
+            
+                td
+                    input#number(type="hidden" name="number" )
+                    label#num
+                td
+                    input#date(type="date" name="date" onchange="datevalidation2()" value=startd style="width:100%")
+                td
+                    input#start(type="time" name="starttime" onchange="timevalidation()" style="width:100%" value=`${event.startdate}`)
+                td
+                    input#end(type="time" name="endtime" onchange="timevalidation()" style="width:100%")
+                td
+                    input#max(type="text" name="max" value="0" style="width:100%")
+                td(colspan="2" )
+                    input#lock(type="submit" value="Apply" )

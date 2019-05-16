@@ -1,0 +1,14 @@
+extends layout.pug
+block login
+    include form/loginForm.pug
+block menu
+    include menu/menu.pug
+block content
+    if message
+        h1= message
+    if errors
+        each error in errors
+            h1= error
+    if infos
+        each i in infos
+            h1= i
